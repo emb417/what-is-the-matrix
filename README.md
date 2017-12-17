@@ -96,8 +96,8 @@ The function takes an optional parameter, an override object [(see index.js)](./
   </script>
 </html>
 ```
-<a id="original-implementation" />
-### [Original Matrix Implementation](https://emb417.github.io/what-is-the-matrix/vanilla-es5.html)
+
+### [The](#original-implementation) [Original Matrix Implementation](https://emb417.github.io/what-is-the-matrix/vanilla-es5.html)
 ```
 <html><head>
  <meta charset="utf-8">
