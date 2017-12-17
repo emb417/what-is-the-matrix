@@ -97,7 +97,7 @@ The function takes an optional parameter, an override object [(see index.js)](./
 </html>
 ```
 
-### [Original Matrix Implementation](https://emb417.github.io/what-is-the-matrix/vanill-es5.html)
+### [Original Matrix Implementation](https://emb417.github.io/what-is-the-matrix/vanilla-es5.html)
 ```
 <html><head>
  <meta charset="utf-8">
