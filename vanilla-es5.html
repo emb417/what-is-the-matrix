@@ -16,7 +16,7 @@ var whatIsTheMatrix = function(ts,td){
     cnvs.setAttribute('height',window.innerHeight);
     cnvs.setAttribute('width',window.innerWidth);
   var ctx = cnvs.getContext("2d");
-  textSize = ts || (Math.floor(window.outerWidth/100));
+  textSize = ts || (Math.floor( ( window.outerWidth || window.innerWidth ) / 100));
   textDecay = td || 0.002;
   var charset = " 0123456789";
     for (i = 0; i < 50; i++){charset += String.fromCharCode(i + 65393);}

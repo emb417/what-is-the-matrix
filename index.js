@@ -16,7 +16,7 @@ const whatIsTheMatrix = ( configOverride ) => {
     'canvasId': 'what-is-the-matrix',
     'canvasHeight': window.innerHeight,
     'canvasWidth': window.innerWidth,
-    'textSize': Math.floor( window.outerWidth || window.innerWidth / 100 ),
+    'textSize': Math.floor( window.outerWidth / 100 ),
     'textDecay': 0.002,
     'charset': Array.from( new Array(42), (x, i) => String.fromCharCode(i + 65393) ),
     'speed': 50,
