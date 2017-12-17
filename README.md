@@ -4,7 +4,7 @@ This was a fun project using random maths to replicate the Matrix digital rain v
 
 This repo has a basic implementation of the main function, whatIsTheMatrix, found in [index.js](./index.js).
 
-The function takes an optional parameter, an override object [(see index.js)](./index.js), then uses ES.Next object spread to set overrides (read: only works with latest chrome and firefox, see the [original implementation](#original-implementation) for support across all browsers).
+The function takes an optional parameter, an override object [(see index.js)](./index.js), then uses ES.Next object spread to set overrides (read: only works with latest chrome and firefox, see the [original implementation](#the) for support across all browsers).
 
 ## Usage Example
 
@@ -97,7 +97,7 @@ The function takes an optional parameter, an override object [(see index.js)](./
 </html>
 ```
 
-### [The](#original-implementation) [Original Matrix Implementation](https://emb417.github.io/what-is-the-matrix/vanilla-es5.html)
+### [The](#the) [Original Matrix Implementation](https://emb417.github.io/what-is-the-matrix/vanilla-es5.html)
 ```
 <html><head>
  <meta charset="utf-8">
