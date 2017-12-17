@@ -2,17 +2,9 @@
 
 This was a fun project using random maths to replicate the Matrix digital rain visualization.  The initial implementation was a background for a website, but I tried to make it "modular" so it can be configured as a widget of sorts.
 
-This repo has a basic implementation of the main function, whatIsTheMatrix, found in index.js.
+This repo has a basic implementation of the main function, whatIsTheMatrix, found in [index.js](./index.js).
 
-The function takes an optional parameter, an override object with these parameters:
-
-* @param {string} canvasId - defaults to 'what-is-the-matrix'
-* @param {number} canvasHeight - defaults to window.innerHeight
-* @param {number} canvasWidth - defaults to window.innerWidth
-* @param {number} textSize - defaults to window.outerWidth / 100
-* @param {number} textDecay - defaults to 0.002
-* @param {Array} charset - default size 50, starting at char code 65393
-* @param {number} speed - default is 50ms
+The function takes an optional parameter, an override object [(see index.js)](./index.js).
 
 ## Usage Example
 
