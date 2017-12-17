@@ -6,7 +6,7 @@
  * @param {number} canvasWidth - defaults to window.innerWidth
  * @param {number} textSize - defaults to window.outerWidth / 100
  * @param {number} textDecay - defaults to 0.002
- * @param {Array} charset - default size 50, starting at char code 65393
+ * @param {Array} charset - default size 42, starting at char code 65393
  * @param {number} speed - default is 50ms
  */
 const whatIsTheMatrix = ( configOverride ) => {
@@ -18,7 +18,7 @@ const whatIsTheMatrix = ( configOverride ) => {
     'canvasWidth': window.innerWidth,
     'textSize': Math.floor( window.outerWidth / 100 ),
     'textDecay': 0.002,
-    'charset': Array.from( new Array(50), (x, i) => String.fromCharCode(i + 65393) ),
+    'charset': Array.from( new Array(42), (x, i) => String.fromCharCode(i + 65393) ),
     'speed': 50,
     ...configOverride
   }

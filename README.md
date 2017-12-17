@@ -81,3 +81,26 @@ The function takes an optional parameter, an override object with these paramete
   </script>
 </html>
 ```
+
+### [Initialize Matrix with Override Values for New Charset](https://emb417.github.io/what-is-the-matrix/new-chars.html)
+```
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>What is the Matrix?</title>
+    <style>
+    * { margin: 0; padding: 0; }
+    </style>
+  </head>
+  <body>
+  </body>
+  <script src='index.js'></script>
+  <script>
+    // init the matrix with overrides
+    whatIsTheMatrix( {
+      'canvasId': 'matrix-override',
+      'charset': ['A','B','C','X','Y','Z']
+    } );
+  </script>
+</html>
+```
