@@ -16,7 +16,7 @@ The function takes an optional parameter, an override object with these paramete
 
 ## Usage Example
 
-### [Initialize Matrix with Default Values](./index.html)
+### [Initialize Matrix with Default Values](https://emb417.github.io/what-is-the-matrix/)
 ```
 <html>
   <head>
@@ -36,7 +36,7 @@ The function takes an optional parameter, an override object with these paramete
 </html>
 ```
 
-### [Initialize Matrix with Override Values for Fast Decay](./fast-decay.html)
+### [Initialize Matrix with Override Values for Fast Decay](https://emb417.github.io/what-is-the-matrix/fast-decay.html)
 ```
 <html>
   <head>
@@ -59,7 +59,7 @@ The function takes an optional parameter, an override object with these paramete
 </html>
 ```
 
-### [Initialize Matrix with Override Values for Slow Rain](./slow-rain.html)
+### [Initialize Matrix with Override Values for Slow Rain](https://emb417.github.io/what-is-the-matrix/slow-rain.html)
 ```
 <html>
   <head>
