@@ -10,10 +10,15 @@
   </body>
   <script src='index.js'></script>
   <script>
+
     // init the matrix with overrides
     whatIsTheMatrix( {
-      'canvasId': 'matrix-override',
-      'fontSpeed': '500'
+      'fontColor': '0,255,0',
+      'fontSizeOffsets': [-4,0,4,32],
+      'fontSpeed': 80,
+      'themeColor': randomRGBColor(),
+      'themeAlpha': 0.1,
+      'themeColor': '0,0,0',
     } );
   </script>
 </html>
