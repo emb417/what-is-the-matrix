@@ -21,6 +21,8 @@ const randomRGBColor = () => Array.from( new Array(3), ( x, i ) => randomFloor(2
 
 const randomStartPosition = () => randomFloor(10) * randomFloor(10);
 
+const randomFontSize = ( config ) => config.fontSize + config.fontSizeOffsets[ randomFloor(config.fontSizeOffsets.length) ];
+
 const whatIsTheMatrix = ( configOverride ) => {
 
   // config object, spreads configOverride after defaults are set
@@ -40,6 +42,16 @@ const whatIsTheMatrix = ( configOverride ) => {
     ...configOverride
   }
 
+  // create array of columns based on canvas width and font size
+  // and populate with random y start positions
+  const columns = Array.from( new Array( Math.round( config.canvasWidth / config.fontSize ) ),
+                              ( x, i ) => ({
+                                'xPosition': i * config.fontSize,
+                                'yPosition': randomFloor((randomStartPosition()) * config.fontSize),
+                                'fontSize': randomFontSize( config ),
+                              })
+                            );
+
   // create canvas for drawing
   const cnvs = document.createElement('canvas');
     // set an id for custom styling
@@ -53,16 +65,7 @@ const whatIsTheMatrix = ( configOverride ) => {
     // append the canvas to the html body
     document.body.appendChild(cnvs);
 
-  // create array of columns based on canvas width and font size
-  // and populate with random y start positions
-  const columns = Array.from( new Array( Math.round( config.canvasWidth / config.fontSize ) ),
-                              ( x, i ) => ({
-                                'xPosition': i * config.fontSize,
-                                'yPosition': randomFloor((randomStartPosition()) * config.fontSize),
-                              })
-                            );
-
-  // draw a character at an interval based on fontSpeed
+  // draw a character at an interval based on font speed
   setInterval( () => {
     // resets background color for fade effect
     ctx.fillStyle = `rgba( ${ config.themeColor }, ${ config.themeAlpha } )`;
@@ -72,19 +75,17 @@ const whatIsTheMatrix = ( configOverride ) => {
     columns.map( ( column, index, character ) => {
       // set font color, size and face
       ctx.fillStyle = `rgba( ${ config.fontColor }, ${ config.fontAlpha } ) `;
-      ctx.font = `${ config.fontSize + config.fontSizeOffsets[ randomFloor(config.fontSizeOffsets.length) ] }pt ${ config.fontFace }`;
-
+      ctx.font = `${ column.fontSize }pt ${ config.fontFace }`;
       // grab a random character from the charset and draw in column x at position y
-      character = config.charset[ randomFloor(config.charset.length) ];
-      ctx.fillText( character, column.xPosition, column.yPosition );
-
+      ctx.fillText( config.charset[ randomFloor(config.charset.length) ], column.xPosition, column.yPosition );
       // randomly decide to get new random starting position
       // OR draw next character below previous character
       if(column.yPosition > ( Math.random() * 1e4) ) {
-        column.yPosition = (randomStartPosition()) * config.fontSize;
+        column.fontSize = randomFontSize( config );
+        column.yPosition = (randomStartPosition()) * column.fontSize;
       }
       else {
-        column.yPosition = Math.abs( column.yPosition + config.fontSize );
+        column.yPosition = Math.abs( column.yPosition + column.fontSize );
       }
     });
   }, config.fontSpeed );
