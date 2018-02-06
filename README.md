@@ -107,7 +107,7 @@ The function takes an optional parameter, an override object [(see index.js)](./
 ...
 ```
 
-### [Initialize Matrix with Random Background Color](https://emb417.github.io/what-is-the-matrix/random-backgound-color-theme.html)
+### [Initialize Matrix with Random Background Color](https://emb417.github.io/what-is-the-matrix/random-background-color-theme.html)
 ```
 ...
   <script>
