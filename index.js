@@ -45,46 +45,46 @@ const whatIsTheMatrix = ( configOverride ) => {
     // set an id for custom styling
     cnvs.setAttribute('id', config.canvasId);
     cnvs.setAttribute('style', `background: rgb( ${ config.themeColor } )`);
-
-  // append the canvas to the html body
-  document.body.appendChild(cnvs);
     // default height and width based on current window size
     cnvs.setAttribute('height', config.canvasHeight);
     cnvs.setAttribute('width', config.canvasWidth);
-
-  // using a 2d context for rendering in the canvas
-  const ctx = cnvs.getContext('2d');
+    // using a 2d context for rendering in the canvas
+    const ctx = cnvs.getContext('2d');
+    // append the canvas to the html body
+    document.body.appendChild(cnvs);
 
   // create array of columns based on canvas width and font size
   // and populate with random y start positions
   const columns = Array.from( new Array( Math.round( config.canvasWidth / config.fontSize ) ),
-                              ( x, i ) => randomFloor((randomStartPosition()) * config.fontSize));
+                              ( x, i ) => ({
+                                'xPosition': i * config.fontSize,
+                                'yPosition': randomFloor((randomStartPosition()) * config.fontSize),
+                              })
+                            );
 
-  // draw a character at an interval based on font speed
+  // draw a character at an interval based on fontSpeed
   setInterval( () => {
-    // set background color
+    // resets background color for fade effect
     ctx.fillStyle = `rgba( ${ config.themeColor }, ${ config.themeAlpha } )`;
-    // create rectangle
     ctx.fillRect( 0, 0, config.canvasWidth, config.canvasHeight );
+
     // what is the matrix, chaotic beauty (read: this is the maths)
-    columns.map( ( y, index, character, x ) => {
-      // set font color
+    columns.map( ( column, index, character ) => {
+      // set font color, size and face
       ctx.fillStyle = `rgba( ${ config.fontColor }, ${ config.fontAlpha } ) `;
-      // set font size and font face
       ctx.font = `${ config.fontSize + config.fontSizeOffsets[ randomFloor(config.fontSizeOffsets.length) ] }pt ${ config.fontFace }`;
-      // grab a character from the array
+
+      // grab a random character from the charset and draw in column x at position y
       character = config.charset[ randomFloor(config.charset.length) ];
-      // select a column
-      x = index * config.fontSize;
-      // draw a character
-      ctx.fillText( character, x, y );
+      ctx.fillText( character, column.xPosition, column.yPosition );
+
       // randomly decide to get new random starting position
       // OR draw next character below previous character
-      if(y > ( Math.random() * 1e4) ) {
-        columns[index] = (randomStartPosition()) * config.fontSize;
+      if(column.yPosition > ( Math.random() * 1e4) ) {
+        column.yPosition = (randomStartPosition()) * config.fontSize;
       }
       else {
-        columns[index] = Math.abs( y + config.fontSize );
+        column.yPosition = Math.abs( column.yPosition + config.fontSize );
       }
     });
   }, config.fontSpeed );
