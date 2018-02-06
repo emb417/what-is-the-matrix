@@ -19,6 +19,8 @@ const randomFloor = ( length = 0 ) => Math.floor( Math.random() * length );
 
 const randomRGBColor = () => Array.from( new Array(3), ( x, i ) => randomFloor(256) ).join(',');
 
+const randomStartPosition = () => randomFloor(10) * randomFloor(10);
+
 const whatIsTheMatrix = ( configOverride ) => {
 
   // config object, spreads configOverride after defaults are set
@@ -53,27 +55,19 @@ const whatIsTheMatrix = ( configOverride ) => {
   // using a 2d context for rendering in the canvas
   const ctx = cnvs.getContext('2d');
 
-  // create array of columns based on canvas width
-  const columns = Array( Math.round( config.canvasWidth / config.fontSize ) ).join(0).split('');
+  // create array of columns based on canvas width and font size
+  // and populate with random y start positions
+  const columns = Array.from( new Array( Math.round( config.canvasWidth / config.fontSize ) ),
+                              ( x, i ) => randomFloor((randomStartPosition()) * config.fontSize));
 
-  // draw a character every 50ms
+  // draw a character at an interval based on font speed
   setInterval( () => {
     // set background color
     ctx.fillStyle = `rgba( ${ config.themeColor }, ${ config.themeAlpha } )`;
     // create rectangle
     ctx.fillRect( 0, 0, config.canvasWidth, config.canvasHeight );
-
     // what is the matrix, chaotic beauty (read: this is the maths)
     columns.map( ( y, index, character, x ) => {
-      // randomly decide to get new random starting position
-      // OR draw next character below previous character
-      if(y > ( Math.random() * 1e4) ) {
-        const randomStartPosition = randomFloor(10) * randomFloor(10);
-        columns[index] = randomStartPosition * config.fontSize;
-      }
-      else {
-        columns[index] = Math.abs( y + config.fontSize );
-      }
       // set font color
       ctx.fillStyle = `rgba( ${ config.fontColor }, ${ config.fontAlpha } ) `;
       // set font size and font face
@@ -84,6 +78,14 @@ const whatIsTheMatrix = ( configOverride ) => {
       x = index * config.fontSize;
       // draw a character
       ctx.fillText( character, x, y );
+      // randomly decide to get new random starting position
+      // OR draw next character below previous character
+      if(y > ( Math.random() * 1e4) ) {
+        columns[index] = (randomStartPosition()) * config.fontSize;
+      }
+      else {
+        columns[index] = Math.abs( y + config.fontSize );
+      }
     });
   }, config.fontSpeed );
 };
