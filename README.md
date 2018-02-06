@@ -4,7 +4,7 @@ This was a fun project using random maths to replicate the Matrix digital rain v
 
 This repo has a basic implementation of the main function, whatIsTheMatrix, found in [index.js](./index.js).
 
-The function takes an optional parameter, an override object [(see index.js)](./index.js), then uses ES.Next object spread to set overrides (read: only works with latest chrome and firefox, see the [original implementation](#original-matrix-implementation) for support across all browsers).
+The function takes an optional parameter, an override object [(see index.js)](./index.js), then uses ES.Next object spread to set overrides (read: only works with latest chrome and firefox, see the [original implementation](#original-matrix-implementation) for support across all browsers but limited overrides).
 
 ## Usage Example
 
@@ -28,73 +28,89 @@ The function takes an optional parameter, an override object [(see index.js)](./
 </html>
 ```
 
-### [Initialize Matrix with Override Values for Fast Decay](https://emb417.github.io/what-is-the-matrix/fast-decay.html)
+### [Initialize Matrix with Green Font and Black Backgroud](https://emb417.github.io/what-is-the-matrix/matrix-theme.html)
 ```
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>What is the Matrix?</title>
-    <style>
-    * { margin: 0; padding: 0; }
-    </style>
-  </head>
-  <body>
-  </body>
-  <script src='index.js'></script>
+...
   <script>
     // init the matrix with overrides
     whatIsTheMatrix( {
-      'canvasId': 'matrix-override',
-      'textDecay': '0.005'
+      'canvasId': 'matrix-theme',
+      'fontColor': '0,255,0',
+      'themeColor': '0,0,0'
     } );
   </script>
-</html>
+...
+```
+
+### [Initialize Matrix with Green Font and White Backgroud](https://emb417.github.io/what-is-the-matrix/matrix-theme.html)
+```
+...
+  <script>
+    // init the matrix with overrides
+    whatIsTheMatrix( {
+      'canvasId': 'white-theme',
+      'fontColor': '0,255,0',
+      'themeColor': '255,255,255'
+    } );
+  </script>
+...
+```
+
+### [Initialize Matrix with Override Values for Fast Decay](https://emb417.github.io/what-is-the-matrix/fast-decay-theme.html)
+```
+...
+  <script>
+    // init the matrix with overrides
+    whatIsTheMatrix( {
+      'canvasId': 'fast-decay-theme',
+      'themeAlpha': '0.5'
+    } );
+  </script>
+...
 ```
 
 ### [Initialize Matrix with Override Values for Slow Rain](https://emb417.github.io/what-is-the-matrix/slow-rain.html)
 ```
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>What is the Matrix?</title>
-    <style>
-    * { margin: 0; padding: 0; }
-    </style>
-  </head>
-  <body>
-  </body>
-  <script src='index.js'></script>
+...
   <script>
     // init the matrix with overrides
     whatIsTheMatrix( {
-      'canvasId': 'matrix-override',
-      'speed': '500'
+      'canvasId': 'slow-rain',
+      'fontSpeed': '500'
     } );
   </script>
-</html>
+...
+```
+
+### [Initialize Matrix with Various Font Sizes](https://emb417.github.io/what-is-the-matrix/matrix-3d-theme.html)
+```
+...
+  <script>
+    // init the matrix with overrides
+    whatIsTheMatrix( {
+      'canvasId': 'matrix-3d-theme',      
+      'fontColor': '0,255,0',
+      'fontSizeOffsets': [-4,0,4,32],
+      'fontSpeed': 80,
+      'themeColor': randomRGBColor(),
+      'themeAlpha': 0.1,
+      'themeColor': '0,0,0',
+    } );
+  </script>
+...
 ```
 
 ### [Initialize Matrix with Override Values for New Charset](https://emb417.github.io/what-is-the-matrix/new-chars.html)
 ```
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>What is the Matrix?</title>
-    <style>
-    * { margin: 0; padding: 0; }
-    </style>
-  </head>
-  <body>
-  </body>
-  <script src='index.js'></script>
+...
   <script>
     // init the matrix with overrides
     whatIsTheMatrix( {
-      'canvasId': 'matrix-override',
+      'canvasId': 'new-chars',
       'charset': ['A','B','C','X','Y','Z']
     } );
   </script>
-</html>
+...
 ```
 
 ### [Original Matrix Implementation](https://emb417.github.io/what-is-the-matrix/vanilla-es5.html)
