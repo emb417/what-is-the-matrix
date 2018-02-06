@@ -86,7 +86,7 @@ const whatIsTheMatrix = ( configOverride ) => {
                   );
       // randomly decide to get new random starting position
       // OR draw next character below previous character
-      if( column.yPosition > ( Math.random() * 1e4 ) ) {
+      if( column.yPosition > ( randomRoll(10) * config.canvasHeight ) ) {
         column.fontAlpha = selectFontAlpha( configOverride );
         column.fontColor = selectFontColor( config );
         column.fontSize = selectFontSize( config );

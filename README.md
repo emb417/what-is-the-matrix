@@ -84,30 +84,32 @@ The function takes an optional parameter, an override object [(see index.js)](./
 ```
 ...
   <script>
-      // init the matrix with overrides
-      whatIsTheMatrix( {
-        'canvasId': '3d-theme',
-        'fontColors': [
-          //'255,0,0',      //red
-          '0,255,0',      //green
-          '0,0,255',      //blue
-          '255,255,255',  //white
-          //'0,0,0',        //black
-          //'255,255,0',    //yellow
-          //'0,255,255',    //aqua
-          //'255,0,255',    //purple
-        ],
-        'fontSizeOffsets': [
-          0.3,
-          0.6,
-          1.0,
-          1.3,
-          1.6,
-          2.0,
-          3.0,
-          4.0,
-        ],
-      } );
+  // init the matrix with overrides
+  whatIsTheMatrix( {
+    'canvasId': '3d-theme',
+    'fontColors': [
+      //'255,0,0',      //red
+      '0,255,0',      //green
+      //'0,0,255',      //blue
+      '255,255,255',  //white
+      //'0,0,0',        //black
+      //'255,255,0',    //yellow
+      //'0,255,255',    //aqua
+      //'255,0,255',    //purple
+    ],
+    'fontSizeOffsets': [
+      0.3,
+      0.6,
+      1.0,
+      1.3,
+      1.6,
+      2.0,
+      3.0,
+      4.0,
+    ],
+    'fontSpeed': 50,
+    'themeAlpha': 0.05,
+  } );
   </script>
 ...
 ```
