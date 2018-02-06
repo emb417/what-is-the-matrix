@@ -6,7 +6,7 @@
  * @param {number} canvasWidth - defaults to window.innerWidth
  * @param {Array} charset - default size 42, starting at char code 65393
  * @param {number} fontAlpha - font transparency, defaults to 0.8, then each column randomizes
- * @param {string} fontColor - rgb, defaults to random
+ * @param {Array} fontColors - rgb strings, e.g. '0,255,0', empty array defaults to random
  * @param {string} fontFace - defaults to arial
  * @param {number} fontSize - pt, defaults to window.outerWidth / 100
  * @param {Array} fontSizeOffsets - randomly adds to fontSize, defaults to [0]
@@ -19,8 +19,10 @@ const randomArrayIndex = ( length = 0 ) => Math.floor( Math.random() * length );
 const randomRGBColor = () => Array.from( new Array(3), ( x, i ) => randomArrayIndex(256) ).join(',');
 const randomRoll = ( size ) => Math.abs( Math.random() * size );
 const selectFontAlpha = ( configOverride = null ) => configOverride && configOverride.fontAlpha || Math.random();
-const selectFontColor = ( configOverride = null ) => configOverride && configOverride.fontColor || randomRGBColor();
-const selectFontSize = ( config ) => config.fontSize * config.fontSizeOffsets[ randomArrayIndex(config.fontSizeOffsets.length) ];
+const selectFontColor = ( config ) => config.fontColors[ randomArrayIndex(config.fontColors.length) ] || randomRGBColor();
+const selectFontSize = ( config ) => config.fontSize
+                                      * config.fontSizeOffsets[ randomArrayIndex(config.fontSizeOffsets.length) ]
+                                      || config.fontSize;
 
 const whatIsTheMatrix = ( configOverride ) => {
 
@@ -31,10 +33,10 @@ const whatIsTheMatrix = ( configOverride ) => {
     'canvasWidth': window.innerWidth,
     'charset': Array.from( new Array(42), (x, i) => String.fromCharCode(i + 65393) ),
     'fontAlpha': 0.8,
-    'fontColor': randomRGBColor(),
+    'fontColors': [],
     'fontFace': 'arial',
     'fontSize': Math.floor( window.outerWidth / 100 ),
-    'fontSizeOffsets': [1],
+    'fontSizeOffsets': [],
     'fontSpeed': 80,
     'themeAlpha': 0.09,
     'themeColor': '0,0,0',
@@ -47,7 +49,7 @@ const whatIsTheMatrix = ( configOverride ) => {
   const columns = Array.from( new Array( Math.round( config.canvasWidth / config.fontSize ) ),
                               ( x, i ) => ({
                                 'fontAlpha': selectFontAlpha( configOverride ),
-                                'fontColor': selectFontColor( configOverride ),
+                                'fontColor': selectFontColor( config ),
                                 'fontSize': config.fontSize,
                                 'xPosition': i * config.fontSize,
                                 'yPosition': randomArrayIndex( randomRoll(100) * config.fontSize),
@@ -86,7 +88,7 @@ const whatIsTheMatrix = ( configOverride ) => {
       // OR draw next character below previous character
       if( column.yPosition > ( Math.random() * 1e4 ) ) {
         column.fontAlpha = selectFontAlpha( configOverride );
-        column.fontColor = selectFontColor( configOverride );
+        column.fontColor = selectFontColor( config );
         column.fontSize = selectFontSize( config );
         column.yPosition = randomRoll(100) * column.fontSize;
       }

@@ -35,7 +35,7 @@ The function takes an optional parameter, an override object [(see index.js)](./
     // init the matrix with overrides
     whatIsTheMatrix( {
       'canvasId': 'green-font',
-      'fontColor': '0,255,0',
+      'fontColors': ['0,255,0'],
     } );
   </script>
 ...
@@ -80,27 +80,45 @@ The function takes an optional parameter, an override object [(see index.js)](./
 ...
 ```
 
-### [Initialize Matrix with Green Font and Various Font Sizes](https://emb417.github.io/what-is-the-matrix/3d-theme.html)
+### [Initialize Matrix with 3D Theme and Multi-colored](https://emb417.github.io/what-is-the-matrix/3d-theme.html)
 ```
 ...
   <script>
-    // init the matrix with overrides
-    whatIsTheMatrix( {
-      'canvasId': '3d-theme',
-      'fontColor': '0,255,0',
-      'fontSizeOffsets': [-8,-4,0,4,16,32],
-    } );
+      // init the matrix with overrides
+      whatIsTheMatrix( {
+        'canvasId': '3d-theme',
+        'fontColors': [
+          //'255,0,0',      //red
+          '0,255,0',      //green
+          '0,0,255',      //blue
+          '255,255,255',  //white
+          //'0,0,0',        //black
+          //'255,255,0',    //yellow
+          //'0,255,255',    //aqua
+          //'255,0,255',    //purple
+        ],
+        'fontSizeOffsets': [
+          0.3,
+          0.6,
+          1.0,
+          1.3,
+          1.6,
+          2.0,
+          3.0,
+          4.0,
+        ],
+      } );
   </script>
 ...
 ```
 
-### [Initialize Matrix with Override Values for New Charset](https://emb417.github.io/what-is-the-matrix/new-chars.html)
+### [Initialize Matrix with Custom Charset](https://emb417.github.io/what-is-the-matrix/custom-chars.html)
 ```
 ...
   <script>
     // init the matrix with overrides
     whatIsTheMatrix( {
-      'canvasId': 'new-chars',
+      'canvasId': 'custom-chars',
       'charset': ['A','B','C','X','Y','Z'],
     } );
   </script>
@@ -127,7 +145,7 @@ The function takes an optional parameter, an override object [(see index.js)](./
     // init the matrix with overrides
     whatIsTheMatrix( {
       'canvasId': 'random-font-color',
-      'fontColor': randomRGBColor(),
+      'fontColors': [(randomRGBColor())],
     } );
   </script>
 ...

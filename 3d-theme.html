@@ -1,7 +1,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>What is the Matrix?</title>
+    <title>3D Theme Matrix-in-JS</title>
     <style>
     * { margin: 0; padding: 0; }
     </style>
@@ -10,12 +10,29 @@
   </body>
   <script src='index.js'></script>
   <script>
-
     // init the matrix with overrides
     whatIsTheMatrix( {
       'canvasId': '3d-theme',
-      'fontColor': '0,255,0',
-      'fontSizeOffsets': [.5,.8,1,1.25,1.5,2,3,4],
+      'fontColors': [
+        //'255,0,0',      //red
+        '0,255,0',      //green
+        '0,0,255',      //blue
+        '255,255,255',  //white
+        //'0,0,0',        //black
+        //'255,255,0',    //yellow
+        //'0,255,255',    //aqua
+        //'255,0,255',    //purple
+      ],
+      'fontSizeOffsets': [
+        0.3,
+        0.6,
+        1.0,
+        1.3,
+        1.6,
+        2.0,
+        3.0,
+        4.0,
+      ],
     } );
   </script>
 </html>
