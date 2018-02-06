@@ -20,7 +20,7 @@ const randomRGBColor = () => Array.from( new Array(3), ( x, i ) => randomArrayIn
 const randomRoll = ( size ) => Math.abs( Math.random() * size );
 const selectFontAlpha = ( configOverride = null ) => configOverride && configOverride.fontAlpha || Math.random();
 const selectFontColor = ( configOverride = null ) => configOverride && configOverride.fontColor || randomRGBColor();
-const selectFontSize = ( config ) => config.fontSize + config.fontSizeOffsets[ randomArrayIndex(config.fontSizeOffsets.length) ];
+const selectFontSize = ( config ) => config.fontSize * config.fontSizeOffsets[ randomArrayIndex(config.fontSizeOffsets.length) ];
 
 const whatIsTheMatrix = ( configOverride ) => {
 
@@ -34,7 +34,7 @@ const whatIsTheMatrix = ( configOverride ) => {
     'fontColor': randomRGBColor(),
     'fontFace': 'arial',
     'fontSize': Math.floor( window.outerWidth / 100 ),
-    'fontSizeOffsets': [0],
+    'fontSizeOffsets': [1],
     'fontSpeed': 80,
     'themeAlpha': 0.09,
     'themeColor': '0,0,0',
@@ -48,7 +48,7 @@ const whatIsTheMatrix = ( configOverride ) => {
                               ( x, i ) => ({
                                 'fontAlpha': selectFontAlpha( configOverride ),
                                 'fontColor': selectFontColor( configOverride ),
-                                'fontSize': selectFontSize( config ),
+                                'fontSize': config.fontSize,
                                 'xPosition': i * config.fontSize,
                                 'yPosition': randomArrayIndex( randomRoll(100) * config.fontSize),
                               })
