@@ -28,73 +28,67 @@ The function takes an optional parameter, an override object [(see index.js)](./
 </html>
 ```
 
-### [Initialize Matrix with Green Font and Black Backgroud](https://emb417.github.io/what-is-the-matrix/matrix-theme.html)
+### [Initialize Matrix with Green Font](https://emb417.github.io/what-is-the-matrix/green-font.html)
 ```
 ...
   <script>
     // init the matrix with overrides
     whatIsTheMatrix( {
-      'canvasId': 'matrix-theme',
+      'canvasId': 'green-font',
       'fontColor': '0,255,0',
-      'themeColor': '0,0,0'
     } );
   </script>
 ...
 ```
 
-### [Initialize Matrix with Green Font and White Backgroud](https://emb417.github.io/what-is-the-matrix/matrix-theme.html)
+### [Initialize Matrix with White Backgroud](https://emb417.github.io/what-is-the-matrix/white-theme.html)
 ```
 ...
   <script>
     // init the matrix with overrides
     whatIsTheMatrix( {
       'canvasId': 'white-theme',
-      'fontColor': '0,255,0',
-      'themeColor': '255,255,255'
+      'themeColor': '255,255,255',
     } );
   </script>
 ...
 ```
 
-### [Initialize Matrix with Override Values for Fast Decay](https://emb417.github.io/what-is-the-matrix/fast-decay-theme.html)
+### [Initialize Matrix with Fast Decay](https://emb417.github.io/what-is-the-matrix/fast-decay.html)
 ```
 ...
   <script>
     // init the matrix with overrides
     whatIsTheMatrix( {
-      'canvasId': 'fast-decay-theme',
+      'canvasId': 'fast-decay',
       'themeAlpha': '0.5'
     } );
   </script>
 ...
 ```
 
-### [Initialize Matrix with Override Values for Slow Rain](https://emb417.github.io/what-is-the-matrix/slow-rain.html)
+### [Initialize Matrix with Slow Rain](https://emb417.github.io/what-is-the-matrix/slow-rain.html)
 ```
 ...
   <script>
     // init the matrix with overrides
     whatIsTheMatrix( {
       'canvasId': 'slow-rain',
-      'fontSpeed': '500'
+      'fontSpeed': '500',
     } );
   </script>
 ...
 ```
 
-### [Initialize Matrix with Various Font Sizes](https://emb417.github.io/what-is-the-matrix/matrix-3d-theme.html)
+### [Initialize Matrix with Green Font and Various Font Sizes](https://emb417.github.io/what-is-the-matrix/3d-theme.html)
 ```
 ...
   <script>
     // init the matrix with overrides
     whatIsTheMatrix( {
-      'canvasId': 'matrix-3d-theme',      
+      'canvasId': '3d-theme',
       'fontColor': '0,255,0',
-      'fontSizeOffsets': [-4,0,4,32],
-      'fontSpeed': 80,
-      'themeColor': randomRGBColor(),
-      'themeAlpha': 0.1,
-      'themeColor': '0,0,0',
+      'fontSizeOffsets': [-8,-4,0,4,16,32],
     } );
   </script>
 ...
@@ -107,7 +101,33 @@ The function takes an optional parameter, an override object [(see index.js)](./
     // init the matrix with overrides
     whatIsTheMatrix( {
       'canvasId': 'new-chars',
-      'charset': ['A','B','C','X','Y','Z']
+      'charset': ['A','B','C','X','Y','Z'],
+    } );
+  </script>
+...
+```
+
+### [Initialize Matrix with Random Background Color](https://emb417.github.io/what-is-the-matrix/random-backgound-color-theme.html)
+```
+...
+  <script>
+    // init the matrix with overrides
+    whatIsTheMatrix( {
+      'canvasId': 'random-background-color-theme',
+      'themeColor': randomRGBColor(),
+    } );
+  </script>
+...
+```
+
+### [Initialize Matrix with Random Font Color](https://emb417.github.io/what-is-the-matrix/random-font-color.html)
+```
+...
+  <script>
+    // init the matrix with overrides
+    whatIsTheMatrix( {
+      'canvasId': 'random-font-color',
+      'fontColor': randomRGBColor(),
     } );
   </script>
 ...
