@@ -7,6 +7,7 @@
  * @param {Array} charset - default size 42, starting at char code 65393
  * @param {number} fontAlpha - font transparency, defaults to 0.8, then each column randomizes
  * @param {Array} fontColors - rgb strings, e.g. '0,255,0', empty array defaults to random
+ * @param {string} fontDirection - down, up or defaults to random
  * @param {string} fontFace - defaults to arial
  * @param {number} fontSize - pt, defaults to window.outerWidth / 100
  * @param {Array} fontSizeOffsets - randomly adds to fontSize, defaults to [0]
@@ -16,13 +17,13 @@
  */
 
 const randomArrayIndex = ( length = 0 ) => Math.floor( Math.random() * length );
+const randomDirection = () => Math.round(Math.random()) ? 'up' : 'down';
 const randomRGBColor = () => Array.from( new Array(3), ( x, i ) => randomArrayIndex(256) ).join(',');
 const randomRoll = ( size ) => Math.abs( Math.random() * size );
 const selectFontAlpha = ( configOverride = null ) => configOverride && configOverride.fontAlpha || Math.random();
 const selectFontColor = ( config ) => config.fontColors[ randomArrayIndex(config.fontColors.length) ] || randomRGBColor();
-const selectFontSize = ( config ) => config.fontSize
-                                      * config.fontSizeOffsets[ randomArrayIndex(config.fontSizeOffsets.length) ]
-                                      || config.fontSize;
+const selectFontDirection = ( configOverride = null ) => configOverride && configOverride.fontDirection || randomDirection();
+const selectFontSize = ( config ) => config.fontSize * config.fontSizeOffsets[ randomArrayIndex(config.fontSizeOffsets.length) ] || config.fontSize;
 
 const whatIsTheMatrix = ( configOverride ) => {
 
@@ -50,6 +51,7 @@ const whatIsTheMatrix = ( configOverride ) => {
                               ( x, i ) => ({
                                 'fontAlpha': selectFontAlpha( configOverride ),
                                 'fontColor': selectFontColor( config ),
+                                'fontDirection': selectFontDirection( configOverride ),
                                 'fontSize': config.fontSize,
                                 'xPosition': i * config.fontSize,
                                 'yPosition': randomArrayIndex( randomRoll(100) * config.fontSize),
@@ -86,14 +88,17 @@ const whatIsTheMatrix = ( configOverride ) => {
                   );
       // randomly decide to get new random starting position
       // OR draw next character below previous character
-      if( column.yPosition > ( randomRoll(10) * config.canvasHeight ) ) {
+      if( ( column.fontDirection === 'down' && column.yPosition > ( randomRoll(10) * config.canvasHeight ) )
+       || ( column.fontDirection === 'up' && column.yPosition < ( config.canvasHeight / randomRoll(20) ) )
+     ) {
         column.fontAlpha = selectFontAlpha( configOverride );
         column.fontColor = selectFontColor( config );
+        column.fontDirection = selectFontDirection( configOverride );
         column.fontSize = selectFontSize( config );
-        column.yPosition = randomRoll(100) * column.fontSize;
+        column.yPosition = randomRoll(80) * column.fontSize;
       }
       else {
-        column.yPosition = Math.abs( column.yPosition + column.fontSize + 2 );
+        column.yPosition = Math.abs( column.yPosition + (column.fontDirection === 'down' ? column.fontSize + 2 : -column.fontSize - 2 ) );
       }
     });
   }, config.fontSpeed );

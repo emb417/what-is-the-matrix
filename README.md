@@ -27,6 +27,39 @@ The function takes an optional parameter, an override object [(see index.js)](./
   </script>
 </html>
 ```
+### [Initialize Matrix with 3D Theme and Multi-colored](https://emb417.github.io/what-is-the-matrix/3d-theme.html)
+```
+...
+  <script>
+  // init the matrix with overrides
+  whatIsTheMatrix( {
+    'canvasId': '3d-theme',
+    'fontColors': [
+      //'255,0,0',      //red
+      '0,255,0',      //green
+      //'0,0,255',      //blue
+      '255,255,255',  //white
+      //'0,0,0',        //black
+      //'255,255,0',    //yellow
+      //'0,255,255',    //aqua
+      //'255,0,255',    //purple
+    ],
+    'fontSizeOffsets': [
+      0.3,
+      0.6,
+      1.0,
+      1.3,
+      1.6,
+      2.0,
+      3.0,
+      4.0,
+    ],
+    'fontSpeed': 50,
+    'themeAlpha': 0.05,
+  } );
+  </script>
+...
+```
 
 ### [Initialize Matrix with Green Font](https://emb417.github.io/what-is-the-matrix/green-font.html)
 ```
@@ -36,6 +69,37 @@ The function takes an optional parameter, an override object [(see index.js)](./
     whatIsTheMatrix( {
       'canvasId': 'green-font',
       'fontColors': ['0,255,0'],
+      'themeAlpha': 0.03,      
+    } );
+  </script>
+...
+```
+
+### [Initialize Matrix with Falling Rain](https://emb417.github.io/what-is-the-matrix/matrix-falling.html)
+```
+...
+  <script>
+    // init the matrix with overrides
+    whatIsTheMatrix( {
+      'canvasId': 'matrix-falling',
+      'fontColors': ['0,255,0'],
+      'fontDirection': 'down',
+      'themeAlpha': 0.03,
+    } );
+  </script>
+...
+```
+
+### [Initialize Matrix with Inverse Rain](https://emb417.github.io/what-is-the-matrix/matrix-inverse.html)
+```
+...
+  <script>
+    // init the matrix with overrides
+    whatIsTheMatrix( {
+      'canvasId': 'matrix-inverse',
+      'fontColors': ['0,255,0'],
+      'fontDirection': 'up',
+      'themeAlpha': 0.03,
     } );
   </script>
 ...
